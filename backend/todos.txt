@@ -1,0 +1,64 @@
+Backend routes:-
+
+/api/auth
+
+| Method | Route       | Description                 | Access        |
+| ------ | ----------- | --------------------------- | ------------- |
+| POST   | `/register` | Register as student/faculty | Public        | done 
+| POST   | `/login`    | Login and get JWT token     | Public        |  done 
+| GET    | `/me`       | Get logged-in user info     | Authenticated |  done
+
+
+/api/users
+
+| Method | Route         | Description                               | Access                               |
+| ------ | ------------- | ----------------------------------------- | ------------------------------------ |
+| GET    | `/`           | Get all users (optionally filter by role) | Admin / Debug                        |  done
+| GET    | `/:id`        | Get public user profile (name, role)      | Public                               |  done 
+| GET    | `/role/:role` | Get all users with role (student/faculty) | Admin / Debug                        |  done 
+| PUT    | `/:id`        | Update user info (email, name)            | Authenticated (own account)          |  done
+| DELETE | `/:id`        | Delete user account                       | Authenticated (own account or admin) |  done
+
+
+
+/api/announcements
+
+| Method | Route  | Description                     | Access                 |
+| ------ | ------ | ------------------------------- | ---------------------- |
+| POST   | `/`    | Create an announcement          | Faculty                |
+| GET    | `/`    | Get all announcements           | Public                 |
+| GET    | `/:id` | Get a single announcement by ID | Public                 |
+| PUT    | `/:id` | Edit an announcement            | Faculty (creator only) |
+| DELETE | `/:id` | Delete an announcement          | Faculty (creator only) |
+
+
+/api/queries
+
+| Method | Route              | Description                           | Access        |
+| ------ | ------------------ | ------------------------------------- | ------------- |
+| POST   | `/`                | Post a new query with tags            | Student       |
+| GET    | `/`                | Get all queries (optional tag filter) | Public        |
+| GET    | `/?tags=tag1,tag2` | Filter queries by tags (multi-tag OR) | Public        |
+| GET    | `/:id`             | Get single query and its comments     | Public        |
+| PUT    | `/:id/upvote`      | Upvote a query                        | Authenticated |
+| PUT    | `/:id/downvote`    | Downvote a query                      | Authenticated |
+| DELETE | `/:id`             | Delete own query                      | Student       |
+
+
+/api/queries/:queryId/comments
+
+| Method | Route                  | Description                                 | Access          |
+| ------ | ---------------------- | ------------------------------------------- | --------------- |
+| POST   | `/`                    | Add a comment (can be a reply or top-level) | Faculty/Student |
+| GET    | `/`                    | Get all comments for a query (threaded)     | Public          |
+| PUT    | `/:commentId/upvote`   | Upvote a comment                            | Authenticated   |
+| PUT    | `/:commentId/downvote` | Downvote a comment                          | Authenticated   |
+| DELETE | `/:commentId`          | Delete a comment (if owner or admin)        | Owner/Admin     |
+
+
+Middleware 
+authMiddleware: to protect private routes
+
+roleMiddleware: to allow only students/faculty/admin on certain routes
+
+validateId: to check for valid MongoDB ObjectId in params
