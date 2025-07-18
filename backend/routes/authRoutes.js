@@ -4,7 +4,7 @@ const authController = require('../controllers/auth');
 const authMiddleware = require('../middleware/authMiddleware');
 
 router.post('/register', authController.userRegister);
-router.get('/login', authController.userLogin);
+router.post('/login', authController.userLogin);
 router.get('/me', authMiddleware, authController.userInfo);
 router.get('/verifyEmail', authController.verifyEmail);
 
