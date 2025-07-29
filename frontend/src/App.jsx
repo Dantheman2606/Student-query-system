@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import HomePage from './pages/HomePage'
 import ProtectedRoute from './components/ProtectedRoute'
+import VerifyEmail from './pages/VerifyEmail'
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
             <ProtectedRoute>
               <HomePage />
             </ProtectedRoute>} />
+
+          <Route path='/verifyEmail' element={<VerifyEmail />} />
         </Routes>
       </BrowserRouter>
     </>

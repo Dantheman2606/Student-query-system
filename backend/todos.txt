@@ -4,8 +4,8 @@ Backend routes:-
 
 | Method | Route       | Description                 | Access        |
 | ------ | ----------- | --------------------------- | ------------- |
-| POST   | `/register` | Register as student/faculty | Public        | done 
-| POST   | `/login`    | Login and get JWT token     | Public        |  done 
+| POST   | `/register` | Register as student/faculty | Public        |  done 
+| POST   | `/login`    | Login and get JWT token     | Public        |  done
 | GET    | `/me`       | Get logged-in user info     | Authenticated |  done
 
 

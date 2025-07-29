@@ -20,6 +20,12 @@ const userLogin = async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password.' });
     }
 
+    if(!user.verified) {
+      return res.status(401).json({
+        message: 'Verify your E-mail to complete registration!'
+      });
+    }
+
     // Validate password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {

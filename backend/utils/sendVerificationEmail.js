@@ -22,7 +22,7 @@ const sendVerificationEmail = async (user, token) => {
     //     }
     // });
 
-    const url = `${process.env.FRONTEND_URL}/verify-email?token=${token}`;
+    const url = `${process.env.FRONTEND_URL}/verifyEmail?token=${token}`;
 
     //console.log(user);
 

@@ -10,6 +10,8 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const LoginPage = () => {
   const [form, setForm] = useState({ email: '', password: '' });
 
+  const [loginError, setLoginError] = useState('');
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -29,18 +31,23 @@ const LoginPage = () => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || 'Login failed');
+      // throw new Error(errorData.message || 'Login failed');
+      // console.log(errorData);
+      setLoginError(errorData.message);
+    }
+    else {
+      const data = await response.json();
+      // console.log(data);
+
+      // Store JWT in local storage
+      localStorage.setItem('token', data.token);
+
+      // console.log('Login successful:', data);
+      // Redirect or show success UI
+      navigate('/home');
     }
 
-    const data = await response.json();
-    console.log(data);
-
-    // Store JWT in local storage
-    localStorage.setItem('token', data.token);
-
-    console.log('Login successful:', data);
-    // Redirect or show success UI
-    navigate('/home');
+    
 
   } catch (error) {
     console.error('Login error:', error.message);
@@ -98,6 +105,9 @@ const LoginPage = () => {
           </button>
         </form>
 
+        <div className='text-center pt-5 text-red-400'>
+          {loginError}
+        </div>
         {/* Optional Links */}
         <div className="mt-6 text-center text-sm text-gray-400">
           Don't have an account?{" "}
@@ -105,6 +115,7 @@ const LoginPage = () => {
             Register
           </a>
         </div>
+        
       </div>
     </div>
     </>
