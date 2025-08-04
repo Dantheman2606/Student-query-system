@@ -71,100 +71,107 @@ export default function RegisterPage() {
 
 
 
+
+
   return (
     <>
       <Landingnavbar />
       <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center px-4 py-12">
 
-        {isLoading ? 
+        {isLoading ?
           isSubmitted ? (
             <div className="bg-gray-800 p-8 rounded-xl shadow-lg text-center w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-4 text-green-400">
-            Registration Successful 🎉
-          </h2>
-          <p className="text-gray-300">
-            Please check your email to verify your account before logging in.
-          </p>
-        </div>
-          ): (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-gray-900 text-white p-6 rounded-2xl shadow-2xl text-center border border-gray-700 max-w-sm w-full">
-              <p className="text-lg font-semibold mb-2">⏳ Creating your account...</p>
-              <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full mx-auto mt-4"></div>
+              <h2 className="text-2xl font-bold mb-4 text-green-400">
+                Registration Successful 🎉
+              </h2>
+              <p className="text-gray-300">
+                Please check your email to verify your account before logging in.
+              </p>
             </div>
-          </div>
+          ) : (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-gray-900 text-white p-6 rounded-2xl shadow-2xl text-center border border-gray-700 max-w-sm w-full">
+                <p className="text-lg font-semibold mb-2">⏳ Creating your account...</p>
+                <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full mx-auto mt-4"></div>
+              </div>
+            </div>
 
-        ) : (
-          <>
-            <h2 className="text-3xl font-bold mb-6">Create an Account</h2>
+          ) : (
+            <>
+              <div className="bg-gray-900 text-white flex   px-4">
+                <div className="w-full max-w-md bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700">
+                  <h2 className="text-3xl font-bold mb-6">Create an Account</h2>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
-              <input
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                type="text"
-                name="department"
-                placeholder="Department"
-                value={formData.department}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                className="w-full p-3 rounded bg-gray-800 border border-gray-600"
-                name="bio"
-                placeholder="Short Bio (e.g. I'm a front-end enthusiast!)"
-                value={formData.bio}
-                onChange={handleChange}
-                required
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition-colors py-3 rounded font-semibold"
-              >
-                Register
-              </button>
-              {message && <p className="text-green-400 mt-2">{message}</p>}
-              {error && <p className="text-red-400 mt-2">{error}</p>}
-            </form>
-          </>
-        )}
+                  <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+                    <input
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="text"
+                      name="name"
+                      placeholder="Full Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                    <input
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                    <input
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                    />
+                    <input
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="password"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      required
+                    />
+                    <input
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="text"
+                      name="department"
+                      placeholder="Department"
+                      value={formData.department}
+                      onChange={handleChange}
+                      required
+                    />
+                    <textarea
+                      className="w-full min-h-24 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      placeholder="Short Bio (e.g. I'm a front-end enthusiast!)"
+                      value={formData.bio}
+                      onChange={handleChange}
+                      required
+                    />
+                    <button
+                      type="submit"
+                      className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2 rounded-lg shadow transition"
+                    >
+                      Register
+                    </button>
+                    {message && <p className="text-green-400 mt-2">{message}</p>}
+                    {error && <p className="text-red-400 mt-2">{error}</p>}
+                  </form>
+                </div>
+
+              </div>
+            </>
+          )}
 
       </div>
+
     </>
   );
 
