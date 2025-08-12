@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors'); // Import CORS
+require('dotenv').config();
 
 const app = express();
 
@@ -21,14 +22,19 @@ console.log("Loaded JWT_SECRET:", process.env.JWT_SECRET);
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const announcementRoutes = require('./routes/announcementRoutes');
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/announcements', announcementRoutes);
+
+app.use('/api/users', userRoutes);
 
 
-app.use('/api/users', userRoutes)
 
 
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
