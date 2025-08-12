@@ -12,10 +12,11 @@ import React from 'react';
 // };
 const Sidebar = () => {
   return (
-    <aside className="w-64 bg-[#0F1A2C] shadow-lg shadow-black-900/50 p-6">
+    <aside className="hidden lg:block w-64 bg-[#0b0b61] shadow-lg shadow-black/50 p-6">
       {/* Placeholder for future sidebar content */}
     </aside>
   );
 };
 
 export default Sidebar;
+

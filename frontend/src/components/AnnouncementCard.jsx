@@ -13,28 +13,28 @@ export default function AnnouncementCard({
     : '';
 
   return (
-    <article className="w-full bg-gray-900 border border-gray-700 shadow-lg shadow-black/50 rounded-2xl p-6">
+    <article className="w-full bg-[#ffffff] border border-gray-300 shadow-lg shadow-black/10 rounded-2xl p-6">
       <header className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-2xl font-semibold text-gray-100 leading-tight">
+          <h1 className="text-4xl font-semibold text-grey-100 leading-tight">
             {title}
-          </h3>
-          
+          </h1>
+
         </div>
-        <time className="text-sm text-gray-400">{formattedDate}</time>
+        <time className="text-2xl text-grey-400">{formattedDate}</time>
       </header>
 
-      <div className="mt-4 text-lg text-gray-200 leading-relaxed">
+      <div className="mt-4 text-2xl text-grey-200 leading-relaxed">
         {content}
       </div>
 
-      <footer className="mt-6 flex items-center justify-between text-sm text-gray-400">
+      <footer className="mt-6 flex items-center justify-between text-sm text-grey-400">
         {/* <span className="inline-flex items-center gap-2">
           <span>Announcement</span>
         </span> */}
-        <p className="mt-1 text-sm text-gray-400">
+        <p className="mt-1 text-xl text-grey-400">
             Posted by{' '}
-            <span className="text-gray-200 font-medium">{postedBy}</span>
+            <span className="text-grey-200 font-medium">{postedBy}</span>
           </p>
       </footer>
     </article>
