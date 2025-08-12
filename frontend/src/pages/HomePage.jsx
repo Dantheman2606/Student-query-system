@@ -1,50 +1,68 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import AnnouncementCard from '../components/AnnouncementCard';
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 
+
+// Main Home Page
 const HomePage = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
-  return (
-    <div className="min-h-screen bg-gray-900 text-white px-6 py-10">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Welcome to Our Portal
-        </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-6">
-          Connect with faculty and students. Ask, learn, and grow together.
-        </p>
 
-        <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
-          <a
-            href="/features"
-            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white transition"
-          >
-            Features
-          </a>
-          <a
-            href="/about"
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-md text-white transition"
-          >
-            About
-          </a>
-          <a
-            href="/login"
-            className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 rounded-md text-white transition"
-          >
-            Login
-          </a>
-           <button
-        onClick={handleLogout}
-        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded transition duration-300"
-      >
-        Logout
-      </button>
-        </div>
+  // replace this shit with API call later
+  const announcements = [
+    {
+      title: 'System Maintenance',
+      content: 'The portal will be down tonight for maintenance.',
+      postedBy: 'Admin',
+      datePosted: '2025-08-12T14:30:00',
+    },
+    {
+      title: 'Exam Schedule Released',
+      content: 'Check the exams section for your updated schedule.',
+      postedBy: 'Prof. Sharma',
+      datePosted: '2025-08-10T10:00:00',
+    },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-[#0B1220] text-white">
+      {/* Navbar */}
+      <Navbar onLogout={handleLogout} />
+
+      {/* Content Layout */}
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <Sidebar />
+
+        {/* Main Content */}
+        <main className="flex-1 p-8 overflow-y-auto">
+          {/* Heading */}
+          <div className="flex justify-center mb-10">
+            <div className="bg-[#0D1525] rounded-3xl border-2 border-blue-400 shadow-2xl shadow-blue-900/50 px-12 py-8 text-center">
+              <h2 className="text-3xl font-extrabold text-purple-400">New Announcements</h2>
+              
+            </div>
+          </div>
+
+          {/* Announcements List */}
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {announcements.map((a, index) => (
+              <AnnouncementCard
+                key={index}
+                title={a.title}
+                content={a.content}
+                postedBy={a.postedBy}
+                datePosted={a.datePosted}
+              />
+            ))}
+          </div>
+        </main>
       </div>
     </div>
   );

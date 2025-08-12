@@ -149,6 +149,7 @@ export default function RegisterPage() {
                       required
                     />
                     <textarea
+                      name='bio'
                       className="w-full min-h-24 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       placeholder="Short Bio (e.g. I'm a front-end enthusiast!)"
                       value={formData.bio}
