@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage'
 import HomePage from './pages/HomePage'
 import ProtectedRoute from './components/ProtectedRoute'
 import VerifyEmail from './pages/VerifyEmail'
+import CreateAnnouncements from './pages/CreateAnnouncements'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             </ProtectedRoute>} />
 
           <Route path='/verifyEmail' element={<VerifyEmail />} />
+          <Route path='/createAnnouncements' element={<CreateAnnouncements />} />
         </Routes>
       </BrowserRouter>
     </>

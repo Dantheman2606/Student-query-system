@@ -18,7 +18,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   function handleAddAnnouncement() {
-    navigate("/CreateAnnouncement");
+    navigate("/createAnnouncements");
   }
 
    useEffect(() => {
