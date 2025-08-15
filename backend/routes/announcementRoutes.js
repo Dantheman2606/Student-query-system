@@ -9,5 +9,6 @@ const AnnouncementController=require("../controllers/Announcements");
 
 router.post('/', authMiddleware ,facultyMiddleware ,AnnouncementController.createAnnouncement); // Add Announcement
 router.get('/', authMiddleware, AnnouncementController.getAnnouncement);    // View Announcements
+router.get('/:id', authMiddleware, AnnouncementController.getAnnouncementById); // Get Announcement by ID
 
 module.exports = router;

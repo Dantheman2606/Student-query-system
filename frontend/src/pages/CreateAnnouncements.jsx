@@ -25,7 +25,8 @@ const CreateAnnouncements = () => {
       body: JSON.stringify({
         title: e.target.title.value,
         content: e.target.content.value,
-        postedBy: decoded.name
+        postedBy: decoded.name,
+        userId: decoded.id
       })
     });
 

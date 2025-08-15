@@ -14,6 +14,11 @@ const announcementSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    userId: {  // ID of the user who posted the announcement
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     datePosted: {
         type: Date,
         default: Date.now
