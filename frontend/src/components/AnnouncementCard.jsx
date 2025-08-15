@@ -27,7 +27,7 @@ export default function AnnouncementCard({
       console.error('Your are not an admin :(',error.message);
     }
     
-  });
+  }, []);
   const formattedDate = datePosted
     ? new Date(datePosted).toLocaleString(undefined, {
         year: "numeric",

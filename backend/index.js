@@ -23,11 +23,12 @@ console.log("Loaded JWT_SECRET:", process.env.JWT_SECRET);
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
+const queryRoutes = require('./routes/queryRoutes');
 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/announcements', announcementRoutes);
-
+app.use('/api/queries', queryRoutes);
 app.use('/api/users', userRoutes);
 
 
