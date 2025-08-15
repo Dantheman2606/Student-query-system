@@ -73,7 +73,7 @@ const HomePage = () => {
   //     datePosted: '2025-08-10T10:00:00',
   //   },
   // ];
-const onEdit = async (id,data)=>{
+const onEdit = async (id, updatedData) => {
   try {
     const response = await fetch(`${apiUrl}/announcements/${id}`, {
       method: 'PUT',
@@ -81,33 +81,28 @@ const onEdit = async (id,data)=>{
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
-      body: JSON.stringify({title:data.title,content:data.content})
-      
+      body: JSON.stringify({
+        title: updatedData.title,
+        content: updatedData.content
+      })
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      // throw new Error(errorData.message || 'Login failed');
-
-      // remove this shit in production
-      console.log(errorData);
-      // setLoginError(errorData.message);
-    }
-    else {
-      const data = await response.json();
-
-      // remove this shit in production
-      console.log(data);
-      setAnnouncements(data);
-
-      
+      console.error("Error updating announcement:", errorData.message || errorData);
+      return; // stop execution if error
     }
 
-    
+    const result = await response.json();
+    console.log("Announcement updated:", result);
+
+    // If backend returns only updated announcement:
+    setAnnouncements(prev =>
+      prev.map(ann => ann._id === id ? result : ann)
+    );
 
   } catch (error) {
-    console.error('Login error:', error.message);
-    // Show error message to user
+    console.error("Network or server error:", error);
   }
 }
 const onDelete = ()=>{
@@ -138,6 +133,7 @@ const onDelete = ()=>{
             {announcements.map((a, index) => (
               <AnnouncementCard
                 key={index}
+                id ={a._id}
                 title={a.title}
                 content={a.content}
                 postedBy={a.postedBy}
