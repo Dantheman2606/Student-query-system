@@ -98,20 +98,47 @@ const onEdit = async (id, updatedData) => {
 
     // If backend returns only updated announcement:
     setAnnouncements(prev =>
-      prev.map(ann => ann._id === id ? result : ann)
+      prev.map(ann => ann._id === id ? result : ann)  
     );
 
   } catch (error) {
     console.error("Network or server error:", error);
   }
 }
-const onDelete = ()=>{
-  
+const onDelete = async (id) => {
+  try {
+    const response = await fetch(`${apiUrl}/announcements/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error deleting announcement:", errorData.message || errorData);
+      return;
+    }
+
+    console.log(`Announcement with ID ${id} deleted successfully`);
+
+    // Remove the deleted announcement from state
+    setAnnouncements(prev =>
+      prev.filter(ann => ann._id !== id)
+    );
+
+  } catch (error) {
+    console.error("Network or server error:", error);
+  }
 }
+
+
   return (
     <div className="min-h-screen flex flex-col bg-[#ffffff] text-black">
       {/* Navbar */}
       <Navbar onLogout={handleLogout} />
+      
 
       {/* Content Layout */}
       <div className="flex flex-1">
@@ -144,7 +171,7 @@ const onDelete = ()=>{
               />
             ))}
           </div>
-           id,
+          
   {/* title,
   content,
   postedBy,
@@ -155,7 +182,7 @@ const onDelete = ()=>{
         </main>
       </div>
     </div>
-  );
+  )
 };
 
 export default HomePage;
