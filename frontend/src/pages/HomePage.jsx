@@ -73,7 +73,46 @@ const HomePage = () => {
   //     datePosted: '2025-08-10T10:00:00',
   //   },
   // ];
+const onEdit = async (id,data)=>{
+  try {
+    const response = await fetch(`${apiUrl}/announcements/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({title:data.title,content:data.content})
+      
+    });
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      // throw new Error(errorData.message || 'Login failed');
+
+      // remove this shit in production
+      console.log(errorData);
+      // setLoginError(errorData.message);
+    }
+    else {
+      const data = await response.json();
+
+      // remove this shit in production
+      console.log(data);
+      setAnnouncements(data);
+
+      
+    }
+
+    
+
+  } catch (error) {
+    console.error('Login error:', error.message);
+    // Show error message to user
+  }
+}
+const onDelete = ()=>{
+  
+}
   return (
     <div className="min-h-screen flex flex-col bg-[#ffffff] text-black">
       {/* Navbar */}
@@ -103,10 +142,20 @@ const HomePage = () => {
                 content={a.content}
                 postedBy={a.postedBy}
                 datePosted={a.datePosted}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                userId={a.userId}
               />
             ))}
           </div>
-          
+           id,
+  {/* title,
+  content,
+  postedBy,
+  datePosted,
+  onEdit,
+  onDelete,
+  userId */}
         </main>
       </div>
     </div>
