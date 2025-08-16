@@ -1,0 +1,17 @@
+[
+  { "name": "Technology", "isVisible": true, "isSelectable": true },
+  { "name": "Academics", "isVisible": true, "isSelectable": true },
+  { "name": "Insem", "isVisible": true, "isSelectable": true },
+  { "name": "Endsem", "isVisible": true, "isSelectable": true },
+  { "name": "Viva", "isVisible": true, "isSelectable": true },
+  { "name": "Practicals", "isVisible": true, "isSelectable": true },
+  { "name": "Stories", "isVisible": true, "isSelectable": true },
+  { "name": "Student asks", "isVisible": true, "isSelectable": true },
+  { "name": "Faculty asks", "isVisible": true, "isSelectable": true },
+  { "name": "Answered by Faculty", "isVisible": true, "isSelectable": true },
+  { "name": "Intership", "isVisible": true, "isSelectable": true },
+  { "name": "OA prep", "isVisible": true, "isSelectable": true },
+  { "name": "Resources", "isVisible": true, "isSelectable": true },
+  { "name": "Companies", "isVisible": true, "isSelectable": true },
+  { "name": "Syllabus", "isVisible": true, "isSelectable": true }
+]
