@@ -1,7 +1,4 @@
-
 const Announcement = require('../../models/announcement');
-
-
 
 const getAnnouncement = async (req, res) => {
     try {
@@ -11,4 +8,4 @@ const getAnnouncement = async (req, res) => {
         res.status(500).json({ message: 'Server error', error });
     }
 };
-module.exports =getAnnouncement;
+module.exports = getAnnouncement;
