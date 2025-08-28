@@ -27,6 +27,11 @@ const querySchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    tags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag',
+        required: true
+    }],
     datePosted: {
         type: Date,
         default: Date.now
