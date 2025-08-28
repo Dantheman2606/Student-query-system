@@ -5,7 +5,8 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import HomePage from './pages/HomePage'
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './utils/ProtectedRoute'
+import ProtectedFacultyRoute from './utils/ProtectedFacultyRoute'
 import VerifyEmail from './pages/VerifyEmail'
 import CreateAnnouncements from './pages/CreateAnnouncements'
 
@@ -18,13 +19,22 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
-          <Route path='/home' element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>} />
 
           <Route path='/verifyEmail' element={<VerifyEmail />} />
-          <Route path='/createAnnouncements' element={<CreateAnnouncements />} />
+
+
+          <Route element={<ProtectedRoute />}>
+
+            <Route path='/home' element={<HomePage />} />
+
+            <Route element={<ProtectedFacultyRoute />}>
+              <Route path='/createAnnouncements' element={<CreateAnnouncements />} />
+            </Route>
+
+            
+          </Route>
+
+          
         </Routes>
       </BrowserRouter>
     </>

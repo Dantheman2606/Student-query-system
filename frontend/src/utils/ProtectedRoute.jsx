@@ -1,6 +1,6 @@
 // components/ProtectedRoute.jsx
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 
 const isTokenValid = (token) => {
@@ -13,7 +13,7 @@ const isTokenValid = (token) => {
   }
 };
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const token = localStorage.getItem('token');
 
   if (!token || !isTokenValid(token)) {
@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
