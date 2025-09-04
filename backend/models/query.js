@@ -50,4 +50,7 @@ const querySchema = new mongoose.Schema({
     }]
 });
 
-mongoose.models.Query || mongoose.model('Query', querySchema);
+// mongoose.models.Query || mongoose.model('Query', querySchema);
+
+const Query = mongoose.models.Query || mongoose.model('Query', querySchema);
+module.exports = Query;

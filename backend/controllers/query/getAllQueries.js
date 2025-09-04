@@ -1,4 +1,4 @@
-const Query = require('../../models/Query');
+const Query = require('../../models/query');
 
 const getAllQueries = async (req, res) => {
     try {
