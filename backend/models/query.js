@@ -10,14 +10,23 @@ const querySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    upVotes : {
+    netVotes: {
         type: Number,
         default: 0
     },
-    downVotes: {
-        type: Number,
-        default: 0
-    },
+    votes: [
+        {
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            type: {
+                type: String,
+                enum: ['upvote', 'downvote']
+            }
+        }
+    ],
+    
     postedBy: {  // Can be admin or teacher
         type: String,
         required: true
