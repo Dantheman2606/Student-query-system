@@ -8,5 +8,6 @@ router.post('/', authMiddleware, queryController.createQuery);
 router.get('/tags', authMiddleware, queryController.getQueryByTags);
 router.get('/', authMiddleware, queryController.getAllQueries);
 router.get('/:id', authMiddleware, queryController.getQueryById);
+router.delete('/:id', authMiddleware, queryController.deleteQueryById);
 
 module.exports = router;
