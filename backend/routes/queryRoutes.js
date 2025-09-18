@@ -15,4 +15,8 @@ router.put('/:id/upvote', authMiddleware, queryController.upvoteQuery);
 router.put('/:id/downvote', authMiddleware, queryController.downvoteQuery);
 router.get('/:id/votes', authMiddleware, queryController.voteCountOfQuery);
 
+// reply route
+const replyController = require('../controllers/reply');
+router.post('/:id/reply', authMiddleware, replyController.replyToQuery);
+
 module.exports = router;
