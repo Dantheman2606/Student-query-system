@@ -25,6 +25,7 @@ const userRoutes = require('./routes/userRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
 const queryRoutes = require('./routes/queryRoutes');
 const tagRoutes = require('./routes/tagRoutes');
+const replyRoutes = require('./routes/replyRoutes');
 
 
 app.use('/api/auth', authRoutes);
@@ -33,6 +34,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/tags', tagRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/queries', queryRoutes);
+app.use('/api/replies', replyRoutes);
 
 
 

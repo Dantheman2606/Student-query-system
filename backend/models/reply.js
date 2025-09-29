@@ -1,4 +1,4 @@
-// models/Announcement.js
+// models/Reply.js
 const mongoose = require('mongoose');
 const { post } = require('../routes/queryRoutes');
 
@@ -41,6 +41,10 @@ const replySchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+// Index to optimize queries for replies under the same query and parent reply
+replySchema.index({ queryId: 1, parentId: 1 });
+
 
 const Reply = mongoose.model('Reply', replySchema, 'Replies');
 module.exports = Reply;

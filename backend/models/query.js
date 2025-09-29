@@ -1,4 +1,4 @@
-// models/Announcement.js
+// models/Query.js
 const mongoose = require('mongoose');
 
 const querySchema = new mongoose.Schema({
