@@ -15,7 +15,7 @@ const downvoteReply = async (req, res) => {
             reply.votes = reply.votes.filter(vote => vote.userId.toString() !== userId && vote.type === 'downvote');
             reply.netVotes += 1;
             await reply.save();
-            return res.status(200).json({ message: 'Downvote removed', reply });
+            return res.status(200).json({ message: 'Downvote removed', votes: reply.netVotes });
         }
 
         // Add the user ID to the downVotes array
@@ -23,7 +23,7 @@ const downvoteReply = async (req, res) => {
         reply.netVotes -= 1;
         await reply.save();
 
-        return res.status(200).json({ message: 'Reply downvoted successfully', reply });
+        return res.status(200).json({ message: 'Reply downvoted successfully', votes: reply.netVotes });
     } catch (error) {
         console.error('Error downvoting reply:', error);
         return res.status(500).json({ message: 'Internal server error' });

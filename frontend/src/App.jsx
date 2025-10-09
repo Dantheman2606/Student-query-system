@@ -9,6 +9,7 @@ import ProtectedRoute from './utils/ProtectedRoute'
 import ProtectedFacultyRoute from './utils/ProtectedFacultyRoute'
 import VerifyEmail from './pages/VerifyEmail'
 import CreateAnnouncements from './pages/CreateAnnouncements'
+import AllDoubts from './pages/AllDoubts'
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
           <Route element={<ProtectedRoute />}>
 
             <Route path='/home' element={<HomePage />} />
+
+            <Route path='/allDoubts' element={<AllDoubts />} />
 
             <Route element={<ProtectedFacultyRoute />}>
               <Route path='/createAnnouncements' element={<CreateAnnouncements />} />

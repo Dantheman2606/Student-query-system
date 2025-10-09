@@ -16,7 +16,7 @@ const upvoteReply = async (req, res) => {
             reply.votes = reply.votes.filter(vote => vote.userId.toString() !== userId && vote.type === 'upvote');
             reply.netVotes -= 1;
             await reply.save();
-            return res.status(200).json({ message: 'Upvote removed', reply });
+            return res.status(200).json({ message: 'Upvote removed', votes: reply.netVotes });
         }
 
         // Add the user ID to the upvotes array
@@ -24,7 +24,7 @@ const upvoteReply = async (req, res) => {
         reply.netVotes += 1;
         await reply.save();
 
-        return res.status(200).json({ message: 'Reply upvoted successfully', reply });
+        return res.status(200).json({ message: 'Reply upvoted successfully', votes: reply.netVotes });
     } catch (error) {
         console.error('Error upvoting reply:', error);
         return res.status(500).json({ message: 'Internal server error' });
