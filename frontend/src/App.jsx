@@ -9,6 +9,7 @@ import ProtectedRoute from './utils/ProtectedRoute'
 import ProtectedFacultyRoute from './utils/ProtectedFacultyRoute'
 import VerifyEmail from './pages/VerifyEmail'
 import CreateAnnouncements from './pages/CreateAnnouncements'
+import AskDoubt from './pages/AskDoubt'
 import AllDoubts from './pages/AllDoubts'
 import ExpandedDoubtCard from './components/ExpandedDoubtCard'
 
@@ -28,7 +29,9 @@ function App() {
           <Route element={<ProtectedRoute />}>
 
             <Route path='/home' element={<HomePage />} />
-
+            {/* Rishi Changes */}
+            <Route path ='askDoubt' element = {<AskDoubt />}/>
+          {/* Post a doubt will come here  */}
             <Route path='/allDoubts' element={<AllDoubts />} />
 
             <Route element={<ProtectedFacultyRoute />}>
