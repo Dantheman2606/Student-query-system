@@ -10,6 +10,7 @@ import ProtectedFacultyRoute from './utils/ProtectedFacultyRoute'
 import VerifyEmail from './pages/VerifyEmail'
 import CreateAnnouncements from './pages/CreateAnnouncements'
 import AllDoubts from './pages/AllDoubts'
+import ExpandedDoubtCard from './components/ExpandedDoubtCard'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
               <Route path='/createAnnouncements' element={<CreateAnnouncements />} />
             </Route>
 
+            <Route path='/doubt/:id' element={<ExpandedDoubtCard />} />
             
           </Route>
 
