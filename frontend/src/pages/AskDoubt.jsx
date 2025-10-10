@@ -83,7 +83,7 @@ export default function PostDoubtPage() {
       }
 
       await response.json();
-      navigate("/Doubts"); // redirect to all doubts page
+      navigate("/allDoubts"); // redirect to all doubts page
     } catch (err) {
       console.error("Error posting doubt:", err);
       setError("Something went wrong. Try again.");

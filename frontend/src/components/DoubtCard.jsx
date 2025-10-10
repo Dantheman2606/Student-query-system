@@ -17,7 +17,7 @@ const DoubtCard = ({
 }) => {
   const [userVote, setUserVote] = useState(null);
   const [netVotes, setNetVotes] = useState(votes);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(tag);
   const [isLoading, setIsLoading] = useState(false);
   const [userId, setUserId] = useState(null);
 
@@ -125,9 +125,15 @@ const DoubtCard = ({
         {/* Left Side */}
         <div className="flex-1 flex flex-col">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-md font-medium">
-              {tag || "General"}
+              {tags.map((t) => {
+                return(
+                   <span className="text-sm bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-md font-medium">
+                    {t.name}
             </span>
+                )
+              })}
+            {/* <span className="text-sm bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-md font-medium">
+            </span> */}
             <span className="text-sm text-gray-500">
               by <span className="font-medium">{author || "Anonymous"}</span>
             </span>
@@ -140,7 +146,7 @@ const DoubtCard = ({
             {truncateText(body, 30)}
           </p>
 
-          {tags.length > 0 && (
+          {/* {tags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-2">
               {tags.map((t) => (
                 <span
@@ -151,7 +157,7 @@ const DoubtCard = ({
                 </span>
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Right Side: Date & Replies */}

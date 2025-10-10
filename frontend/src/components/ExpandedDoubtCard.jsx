@@ -296,12 +296,12 @@ const ExpandedDoubtCard = () => {
             </p>
             <p className="mt-4 text-gray-800">{query.content}</p>
             <div className="flex flex-wrap gap-2 mt-3">
-              {query.tags?.map((t, i) => (
+              {query.tags?.map((t) => (
                 <span
-                  key={i}
+                  key={t._id}
                   className="bg-blue-100 text-blue-700 px-2 py-1 text-sm rounded-md"
                 >
-                  #{t}
+                  {t.name}
                 </span>
               ))}
             </div>

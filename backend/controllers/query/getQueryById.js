@@ -3,7 +3,7 @@ const Query=require('../../models/query');
 const getQueryById=async(req,res)=>{
     const {id}=req.params;
     try{
-        const query = await Query.findById(id);
+        const query = await Query.findById(id).populate('tags', 'name');
         if (!query) {
             return res.status(404).json({ message: 'Query not found' });
         }

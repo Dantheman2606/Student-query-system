@@ -69,7 +69,7 @@ const AllDoubts = () => {
                   date={d.datePosted}
                   votes={d.netVotes}
                   voteData={d.votes}
-                  tag={d.tags || "General"}
+                  tag={d.tags}
                   // onVote={handleVote}
                 />
               ))}
