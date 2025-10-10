@@ -39,26 +39,7 @@ const AllDoubts = () => {
     fetchDoubts();
   }, []);
 
-  const handleVote = async (id, type) => {
-    try {
-      const res = await fetch(`${apiUrl}/queries/${id}/${type}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!res.ok) throw new Error("Vote failed");
-
-      const data = await res.json();
-      // The backend returns `votes` = updated vote count
-      return data.votes;
-    } catch (err) {
-      console.error("Vote failed:", err);
-      return null;
-    }
-  };
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-[#ffffff] text-black">
@@ -72,14 +53,18 @@ const AllDoubts = () => {
           {loading && <p className="text-gray-500">Loading doubts...</p>}
           {error && <p className="text-red-500">Error: {error}</p>}
 
+          
+
           {!loading && !error && (
             <div className="flex flex-col gap-6">
               {doubts.map((d) => (
+                
                 <DoubtCard
                   key={d._id}
                   id={d._id}
                   title={d.title}
                   body={d.content}
+                  replyCount={d.replies.length}
                   author={d.postedBy}
                   date={d.datePosted}
                   votes={d.netVotes}
