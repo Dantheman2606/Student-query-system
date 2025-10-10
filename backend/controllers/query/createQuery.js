@@ -2,12 +2,12 @@ const Query = require('../../models/query');
 const Tag = require('../../models/tag');
 
 const createQuery = async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content , tags} = req.body;
 
     const userId = req.user.id;
     const postedBy = req.user.name;
 
-    if(!title || !content || !postedBy || !userId) {
+    if(!title || !content || !postedBy || !userId || !tags) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -20,6 +20,7 @@ const createQuery = async (req, res) => {
         if (!yearTag) {
             return res.status(400).json({ error: `No tag found for year ${year}` });
         }
+        tags.push(yearTag._id);
 
 
         const newQuery = new Query({
@@ -27,7 +28,7 @@ const createQuery = async (req, res) => {
             content,
             postedBy,
             userId,
-            tags: [yearTag._id]
+            tags: tags
         });
 
         await newQuery.save();
